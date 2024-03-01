@@ -109,8 +109,7 @@ app.get("/api/prods", (req, res) => {
   //cache session in a cookie
   req.session.visited = true;
   console.log(req.signedCookies.cookie_name);
-  if (
-    req.signedCookies.cookie_name &&
+  if (    req.signedCookies.cookie_name &&
     req.signedCookies.cookie_name === "cookie_value"
   ) {
     return res.status(201).send({ msg: "Access ok" });
