@@ -185,7 +185,6 @@ async function matchUserCredentials(payload) {
 app.get(
   "/api/auth/status/validateCredentialsAgainstSessiondataOnEveryRequest",
   (req, res, next) => {
-
     const {
       body: { username, password },
     } = req;
@@ -210,6 +209,35 @@ app.get(
     }
   }
 );
+
+//another important thing, always make sure you do validation on your reuest like the body being sent
+
+//last example adding cart data for authenticated users
+app.post("/api/cart", (req, res) => {
+  //if no user, return not authenticated to post cart
+  const { body: item } = req;
+  //setting a cart in the session to push items
+  const { cart } = req.session;
+  //if cart in session
+  if (cart) {
+    //if item not in cart, add it to cart
+    cart.push(item);
+  } else {
+    //if item in cart, just return the item to that cart
+    req.session.cart = [item];
+  }
+  res.status(201).send(item);
+});
+
+app.get("/api/cart", (req, res) => {
+  //if no user, return not authenticated to post cart
+  if (!req.session.user)
+    return res
+      .status(401)
+      .send({ msg: `can not get  cart items, please login/register` });
+  //else get the cart from the session else just an empty cart if no items previously added
+  res.status(201).send(req.session.cart ?? []) ;
+});
 
 app.listen(PORT, () => {
   console.log(`serverMsg: {server running on port ${PORT}}`);
