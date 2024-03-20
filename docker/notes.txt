@@ -1,0 +1,113 @@
+https://blog.sixeyed.com/
+
+https://z-lib.io/
+
+Docker is a platform for running applications in lightweight units called containers
+
+why Docker? 
+1: easier to run apps in any environment quickly, e.g running dev and prod of APIs with a single line of code
+instead of weeks of installing tools for that project
+
+2: Lowered costs of running apps on cloud services ... in normal scenraion one runs different pieces of your app in the cloud 
+leading to higer costs billed per resources. With Docker You migrate each part of
+your application to a container, and then you can run the whole application in containers using Azure Kubernetes Service or Amazon’s Elastic Container Service, or on
+your own Docker cluster in the datacenter.
+
+3: moving application into a distributed system, whre each feature is dockerized and runned on its own virtual network.
+These mini apps can then communicate to each other without exposing the app to the world hence avoiding the monolith way of building 
+a big feature in a whole month and redeploying it.
+
+4: Serverless apps and more 
+A single cluster of servers running Docker can run every type of application, and 
+you build, deploy, and manage them all in the same way no matter what architecture or 
+technology stack they use
+
+5: 1.1.5 Digital transformation with DevOps
+
+
+//install docker for windowsa
+
+//enable hyper-V
+https://learn.microsoft.com/en-us/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v
+
+//enable bios virtualization
+https://www.geeksforgeeks.org/how-to-enable-virtualization-vt-x-in-windows-10-bios/
+
+install wsl
+https://www.howtogeek.com/744328/how-to-install-the-windows-subsystem-for-linux-on-windows-11/
+//then enable wsl for linux to be able to run docker 
+https://learn.microsoft.com/en-us/windows/wsl/install
+https://learn.microsoft.com/en-us/windows/wsl/install-manual
+
+
+cleaning packages or containers 
+docker container rm -f $(docker container ls -aq)
+
+
+check docker version
+docker version
+
+CREATING A DCOKER IMAGE 
+https://docs.docker.com/get-started/02_our_app/
+must be in powershell , put this command ---- New-Item -Path . -Name Dockerfile -ItemType File
+
+build the image 
+docker build -t getting-started .
+
+
+if you start getting errorsd like cannot fetch ananymous token or error response from deomon docker
+just add an access token to docker desktop
+https://docs.docker.com/security/for-developers/access-tokens/
+access token via login docker login --username <YOUR_USERNAME>
+docker login -u 254alamin
+for passsword put your token
+
+or if the token cant be signedin, just login in with your username
+ and your normal password you signed to docker hub like in my case where I struggled signing in for 
+ almost 3 hours
+
+without signing in , the connection to pull public container or build container will be disrupted
+
+once an image is created , you dont need node modules to run the app 
+# Install node packages, install serve, build the app, and remove dependencies at the end
+RUN npm install \
+    && npm install -g serve \
+    && npm run build \
+    && rm -fr node_modules
+
+docker build -t welcome-to-docker .
+Breaking down this command
+
+to see your images , close and open docker to refresh it and it will appear
+
+The -t flag tags your image with a name. (welcome-to-docker in this case). And the .
+ lets Docker know where it can find the Dockerfile.
+
+
+
+
+
+running a container
+docker container run diamol/ch02-hello-diamol
+
+
+docker container run --interactive --tty diamol/base
+The --interactive flag tells Docker you want to set up a connection to the container,
+and the --tty flag means you want to connect to a terminal session inside the container. The output will show Docker pulling the image, and then you’ll be left with a
+command prompt
+
+get details of all the running containers
+docker container ls
+
+docker container top lists the processes running in the container 
+
+docker container logs .....displays any log entries the container
+has collected
+
+docker container inspect shows you all the details of a
+container
+ docker container inspect container-name
+
+2.4 Hosting a website in a container
+any status
+

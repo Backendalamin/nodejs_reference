@@ -1,0 +1,13 @@
+1: create resource group 
+2: create app service plan 
+3: create app service / web app 
+4: create github repo 
+5: connection github to azure 
+6: write script for production in server.js
+7:change baseUrl 
+8:build client static files 
+9: push code to github
+10: set up env vvariables in azure 
+
+use this blog easy to follow  
+https://betterprogramming.pub/deploy-react-node-js-application-in-a-virtual-machine-5b910d6f3aac
