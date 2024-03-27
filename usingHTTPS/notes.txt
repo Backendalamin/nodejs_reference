@@ -1,0 +1,46 @@
+In short, use HTTPS instead of HTTP. It helps protect your users against all kinds of
+attacks.
+
+there two middlewares to enforce HTTPS
+
+1:express-enforces-ssl
+//Basically, if the request is over HTTPS, it continues on to the
+//rest of your middleware and routes. If not, it redirects to the HTTPS version
+
+To use this module, you’ll need to do two things.
+1 Enable the “trust proxy” setting. Most of the time, when you deploy your applications, your server isn’t directly connecting to the client. If you’re deployed to
+the Heroku cloud platform (as you’ll explore in chapter 11), Heroku servers sit
+between you and the client. To tell Express about this, you need to enable the
+“trust proxy” setting.
+2 Call the middleware
+
+npm install express-enforces-ssl,
+var enforceSSL = require("express-enforces-ssl");
+// … 
+app.enable("trust proxy");
+app.use(enforceSSL());
+
+//see more details https://github.com/aredo/express-enforces-ssl
+
+Once your users are on HTTPS, you’ll want to tell them to avoid going back to HTTP
+using HTTP Strict Transport Security (HSTS) browser feature, example keep users on HTTPS
+for one year
+.......Strict-Transport-Security: max-age=31536000 
+There are approximately 31,536,000 seconds in a year.
+
+second you can also enable subdomains https e.g wwww.mybiz.com can enable www.careers.mybiz.com
+using HELMET feature see more at https://github.com/helmetjs/helmet,
+a module for setting helpful HTTP security headers in your Express applications.
+
+npm install helmet
+
+var helmet = require("helmet");
+var ms = require("ms");
+// … 
+app.use(helmet.hsts({
+ maxAge: ms("1 year"),
+ includeSubdomains: true
+}))
+Now, HSTS will be set on every request
+
+

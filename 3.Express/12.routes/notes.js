@@ -38,3 +38,6 @@
 // more targeted and focused testing. You can write tests specifically
 //  for user-related functionality or product-related functionality,
 //   ensuring comprehensive test coverage and easier debugging.
+
+Organizing Express Routes with a Route Loader
+https://dev.to/dhinesh03/organizing-express-routes-with-a-route-loader-l73
