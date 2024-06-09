@@ -1,0 +1,8 @@
+/API_PREFIX/users GET: Get all users.
+/API_PREFIX/users POST: Create a new user.
+/API_PREFIX/users/{ID} DELETE: Delete a specific user.
+/API_PREFIX/users/{ID} PATCH: Update a specific user.
+/API_PREFIX/users/{ID} GET: Get a specific user.
+
+/API_PREFIX/auth/login POST: Log in a user.
+/API_PREFIX/auth/change-password POST: Change a user's password.

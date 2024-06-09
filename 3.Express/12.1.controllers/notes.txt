@@ -1,0 +1,5 @@
+Controllers are the functions where you will write code to handle 
+the data or let me say the incoming requests and responses for the 
+client. Yesterday, we learned how to create routes when starting a project. 
+Today, will learn about creating controllers in express. js and managing application logic.
+https://www.youtube.com/@covalence-io/videos
