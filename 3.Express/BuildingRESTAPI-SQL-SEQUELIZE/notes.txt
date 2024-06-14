@@ -1,0 +1,27 @@
+
+https://ravindradevrani.medium.com/node-js-rest-api-crud-with-mssql-and-sequelize-746381585043
+yarn add express sequelize tedious dotenv cors
+yarn add -D nodemon
+
+//connect to the mssql https://www.youtube.com/watch?v=YuhKhkQqtP8&ab_channel=2ndcode
+
+//connect to sequalize https://www.youtube.com/watch?v=eUWPCdNLKMo&ab_channel=LeelaWebDev ORM
+//enable sql MS  port https://www.youtube.com/watch?v=yLaKZAx2l7w&ab_channel=RecastSoftware
+//prblem with port sql server https://www.youtube.com/watch?v=boVqsffat0Q&ab_channel=timeoutexpired
+
+
+//reset sql server username and password
+https://www.top-password.com/knowledge/change-sql-server-password.html
+
+//enable SQL Authenticationhttps://www.youtube.com/watch?v=-UY0fHckkGc&ab_channel=SachinSamy
+
+
+The error you're encountering suggests that the Sequelize connection to your SQL Server is failing. 
+Given that your SQL Server is set up to use Windows Authentication (Integrated Security) 
+and the sequelize library doesn't directly support Windows Authentication via connection
+ strings, you need to use an additional library called tedious for this.
+
+Here's a detailed step-by-step approach to address the issue:
+
+Step 1: Install tedious
+Ensure you have tedious installed, as it's required for Sequelize to communicate with MSSQL: npm install tedious
