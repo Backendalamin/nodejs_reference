@@ -1,0 +1,20 @@
+G test
+libuv - c library that node js is built upon and also responsible for ithe event loop asynchronous
+npm  - easy dev for packages 
+openSSL - implementation of graphical functions used to listen to crypto modules
+V8 - translate code to machine code for execution
+zlib - lib used for compression 
+googletest
+c-ares
+
+//node js core modules to cover  
+fs
+http
+url
+Path
+openSSLquerstring
+events
+util
+crypto
+stream
+zlib

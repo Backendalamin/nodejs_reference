@@ -1,0 +1,20 @@
+1. console.log(process.env):
+
+This line prints the contents of the process.env object in your Node.js application.
+The process.env object is a built-in object in Node.js that stores environment variables. These variables are set outside of your code, typically during system configuration or when starting your application.
+Environment variables are key-value pairs that provide a way to configure your application without modifying the code itself.
+Common Use Cases of Environment Variables:
+
+Database Credentials: You can store database connection details (username, password, etc.) as environment variables to avoid hardcoding them in your code, improving security.
+API Keys: API keys for external services can be stored as environment variables to keep them confidential.
+Configuration Settings: You can define application-specific configurations (like port numbers, logging levels) as environment variables.
+2. console.log(process.argv):
+
+This line prints the values of the process.argv array in your Node.js application.
+The process.argv array contains the command-line arguments passed when you start your Node.js script.
+The first element (process.argv[0]) is always the path to the Node.js executable, while the second element (process.argv[1]) is the path to your Node.js script itself.
+Any additional arguments you provide on the command line are stored in subsequent elements of the array (starting from index 2).
+Common Use Cases of Command-Line Arguments:
+
+Passing Input Data: You can pass data to your Node.js script through command-line arguments, allowing for customization of behavior without modifying the script itself.
+Specifying Configuration Options: You can use command-line arguments to configure specific settings for your script on the fly.
